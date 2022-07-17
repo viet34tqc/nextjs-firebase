@@ -100,7 +100,7 @@ const Dashboard = () => {
 				setLoading(false);
 			}
 		}, 500),
-		[]
+		[] // If we dont pass the username and use formValue state, then we have to pass formValue to the dependancy array that makes useCallback useless.
 	);
 	useEffect(() => {
 		checkUsername(formValue);
