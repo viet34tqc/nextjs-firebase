@@ -3,7 +3,7 @@ import { useUserData } from './hooks';
 
 interface IUserContext {
 	user: any;
-	email: string;
+	email: string | undefined | null;
 	username: string | null;
 }
 
@@ -18,6 +18,7 @@ const UserContextProvider = ({ children }: { children: ReactNode }) => {
 
 	const value = {
 		user,
+		email: user?.email,
 		username,
 	};
 	return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

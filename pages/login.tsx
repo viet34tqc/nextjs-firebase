@@ -14,14 +14,6 @@ function SignInWithEmail() {
 	async function handleSubmit(e: FormEvent) {
 		e.preventDefault();
 		try {
-			const user = await signInWithEmailAndPassword(auth, email, password);
-			await setDoc(doc(firestore, 'users', user.user.uid), {
-				email: user.user.email,
-				displayName: user.user.displayName,
-			});
-			await addDoc(collection(firestore, 'usernames'), {
-				uid: user.user.uid,
-			});
 			await router.push('/dashboard');
 			await signInWithEmailAndPassword(auth, email, password);
 		} catch (error) {
