@@ -1,9 +1,5 @@
 import Link from 'next/link';
 
-type Props = {
-	posts: any[];
-};
-
 function PostItem({ post, admin = false }: { post: any; admin?: boolean }) {
 	// Naive method to calc word count and read time
 	const wordCount = post?.content.trim().split(/\s+/g).length;
@@ -50,10 +46,16 @@ function PostItem({ post, admin = false }: { post: any; admin?: boolean }) {
 	);
 }
 
-const PostFeed = ({ posts }: Props) => {
-	return posts
-		? posts.map((post) => <PostItem post={post} key={post.slug} />)
-		: null;
+const PostFeed = ({ posts }: { posts: any[] }) => {
+	return posts ? (
+		<>
+			{posts.map((post) => (
+				<PostItem post={post} key={post.slug} />
+			))}
+		</>
+	) : (
+		<p>There is no posts here</p>
+	);
 };
 
 export default PostFeed;
