@@ -3,6 +3,7 @@ import {
 	doc,
 	getDoc,
 	getDocs,
+	limit,
 	query,
 	where,
 	writeBatch,
@@ -69,7 +70,11 @@ const Dashboard = () => {
 				// Find the old username document by uID
 				// Then delete
 				const usernameCollectionRef = collection(firestore, 'usernames');
-				const q = query(usernameCollectionRef, where('uid', '==', user.uid));
+				const q = query(
+					usernameCollectionRef,
+					where('uid', '==', user.uid),
+					limit(1)
+				);
 				const querySnapshot = await getDocs(q);
 				let docId = '';
 				querySnapshot.forEach(doc => {
