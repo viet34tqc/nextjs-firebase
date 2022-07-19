@@ -40,16 +40,14 @@ export async function getServerSideProps({ query: q }: any) {
 	let user = null;
 	let posts = null;
 
-	if (userDoc) {
-		user = userDoc.data();
-		const postsQuery = query(
-			collection(userDoc.ref, 'posts'),
-			where('published', '==', true),
-			orderBy('createdAt', 'desc'),
-			limit(5)
-		);
-		posts = (await getDocs(postsQuery)).docs.map(postToJSON);
-	}
+	user = userDoc.data();
+	const postsQuery = query(
+		collection(userDoc.ref, 'posts'),
+		where('published', '==', true),
+		orderBy('createdAt', 'desc'),
+		limit(5)
+	);
+	posts = (await getDocs(postsQuery)).docs.map(postToJSON);
 
 	return {
 		props: { user, posts }, // will be passed to the page component as props
