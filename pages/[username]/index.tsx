@@ -1,15 +1,12 @@
 import {
 	collection,
-	doc,
 	getDocs,
 	limit,
 	orderBy,
 	query,
-	Timestamp,
 	where,
-	writeBatch,
 } from 'firebase/firestore';
-import { firestore, getUserWithUsername, postToJSON } from '../../lib/firebase';
+import { getUserWithUsername, postToJSON } from '../../lib/firebase';
 import PostFeed from './components/PostFeed';
 import UserProfile from './components/UserProfile';
 
