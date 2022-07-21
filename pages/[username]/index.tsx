@@ -7,7 +7,7 @@ import {
 	where,
 } from 'firebase/firestore';
 import { getUserWithUsername, postToJSON } from '../../lib/firebase';
-import PostFeed from './components/PostFeed';
+import PostFeed from '../../components/PostFeed';
 import UserProfile from './components/UserProfile';
 
 type Props = {

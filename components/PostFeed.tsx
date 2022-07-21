@@ -46,10 +46,10 @@ function PostItem({ post, admin = false }: { post: any; admin?: boolean }) {
 	);
 }
 
-const PostFeed = ({ posts, admin }: { posts: any[]; admin?: boolean }) => {
+const PostFeed = ({ posts, admin }: { posts: any; admin?: boolean }) => {
 	return posts ? (
 		<>
-			{posts.map(post => (
+			{posts.map((post: any) => (
 				<PostItem post={post} key={post.slug} admin={admin} />
 			))}
 		</>

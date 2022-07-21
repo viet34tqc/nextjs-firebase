@@ -61,7 +61,7 @@ function SignInWithGG() {
 			const docRef = doc(firestore, 'users', user.user.uid);
 
 			// Get document
-			const docSnap = await getDoc(docRef);
+			const docSnap = await getDoc(docRef); // Return a snapshot object, not the data
 			if (!docSnap.exists()) {
 				// create or update document with custom id
 				await setDoc(doc(firestore, 'users', user.user.uid), {
