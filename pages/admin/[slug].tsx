@@ -1,17 +1,10 @@
-type Props = {
-    post: any
-};
+import AuthCheck from '@components/AuthCheck';
+import PostManager from './components/PostManager';
 
-export function getServerSideProps() {
-    return {
-        props: {
-            post: null
-        }
-    }
+export default function AdminPostEdit() {
+	return (
+		<AuthCheck>
+			<PostManager />
+		</AuthCheck>
+	);
 }
-
-const EditPostPage = ({post}: Props) => {
-return <main>EditPostPage</main>;
-};
-
-export default EditPostPage;

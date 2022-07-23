@@ -1,7 +1,7 @@
 import { firestore } from '@lib/firebase';
 import { useUserContext } from '@lib/UserContext';
 import styles from '@styles/Admin.module.css';
-import { addDoc, collection, doc, serverTimestamp } from 'firebase/firestore';
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import kebabCase from 'lodash.kebabcase';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -25,9 +25,8 @@ const CreateNewPost = (props: Props) => {
 		e.preventDefault();
 		const uid = user.uid;
 		const userRef = doc(firestore, 'users', uid);
-		const postsRef = collection(userRef, 'posts');
+		const postRef = doc(userRef, 'posts', slug);
 
-		// Tip: give all fields a default value here
 		const data = {
 			title,
 			slug,
@@ -40,7 +39,7 @@ const CreateNewPost = (props: Props) => {
 			heartCount: 0,
 		};
 
-		await addDoc(postsRef, data);
+		await setDoc(postRef, data);
 
 		toast.success('Post created!');
 
