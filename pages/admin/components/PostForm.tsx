@@ -5,10 +5,13 @@ import toast from 'react-hot-toast';
 import ReactMarkdown from 'react-markdown';
 
 export default function PostForm({ defaultValues, postRef, preview }: any) {
-	const { register, handleSubmit, formState, reset, watch } = useForm<{
-		content: string;
-		published: boolean;
-	}>({
+	const {
+		register,
+		handleSubmit,
+		formState,
+		reset,
+		watch,
+	} = useForm<{content: string, published: boolean}>({
 		defaultValues,
 		mode: 'onChange',
 	});

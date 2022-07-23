@@ -1,3 +1,4 @@
+import { deleteDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
@@ -7,7 +8,7 @@ export default function DeletePostButton({ postRef }: any) {
 	const deletePost = async () => {
 		const doIt = confirm('are you sure!');
 		if (doIt) {
-			await postRef.delete();
+			await deleteDoc(postRef);
 			router.push('/admin');
 			toast('post annihilated ', { icon: '🗑️' });
 		}
